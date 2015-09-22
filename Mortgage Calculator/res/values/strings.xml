@@ -1,13 +1,17 @@
 <resources>
-    <string name="app_name">CMPE277-Mortgage-Calculator</string>
+    <string name="app_name">Mortgage Calculator</string>
 
     <string name="welcome_message">Welcome to Mortgage Calculator(Only Numbers Accepted)</string>
     <string name="home_value">Home Value</string>
+    <string name="home_value_hint">Home Value(in $)</string>
     <string name="action_settings">Settings</string>
     <string name="down_payment">Down Payment</string>
-    <string name="interest_rate">Interest Rate (in %)</string>
-    <string name="terms">Terms (in years)</string>
+    <string name="down_payment_hint">Down Payment(in $)</string>
+    <string name="interest_rate">Interest Rate</string>
+    <string name="interest_rate_hint">Interest Rate (in %)</string>
+    <string name="terms">Terms</string>
     <string name="property_tax_rate">Property Tax Rate</string>
+    <string name="property_tax_rate_hint">Property Tax Rate(in %)</string>
     
     <string-array name="terms_list">
         <item>Select Term(in years)</item>
@@ -17,6 +21,7 @@
         <item>30</item>
         <item>40</item>
     </string-array>
-    <string name="btn_text">Calculate</string>
+    <string name="btn_reset">Reset</string>
+    <string name="btn_calculate">Calculate</string>
 
 </resources>

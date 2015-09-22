@@ -16,10 +16,24 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText homeValue,downPayment,interestRate,propTaxRate;
+    private Spinner terms;
+    private TextView paymentHeader,totalTaxPaid,totalInterest,monthlyPayment,payOffDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        homeValue =  (EditText)findViewById(R.id.homeValue);
+        downPayment =  (EditText)findViewById(R.id.downPayment);
+        interestRate =  (EditText)findViewById(R.id.interestRate);
+        propTaxRate =  (EditText)findViewById(R.id.propTaxRate);
+        terms = (Spinner)findViewById(R.id.terms);
+        paymentHeader = (TextView)findViewById(R.id.paymentHeader);
+        totalTaxPaid = (TextView)findViewById(R.id.totalTaxPaid);
+        totalInterest = (TextView)findViewById(R.id.totalInterestPaid);
+        monthlyPayment = (TextView)findViewById(R.id.monthlyPayment);
+        payOffDate = (TextView)findViewById(R.id.payOffDate);
     }
 
     @Override
@@ -37,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.resetAction) {
+            reset();
             return true;
         }
 
@@ -49,14 +64,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void calculateMortgage(View view){
-        EditText homeValue,downPayment,interestRate,propTaxRate;
-        Spinner terms;
 
-        homeValue =  (EditText)findViewById(R.id.homeValue);
-        downPayment =  (EditText)findViewById(R.id.downPayment);
-        interestRate =  (EditText)findViewById(R.id.interestRate);
-        propTaxRate =  (EditText)findViewById(R.id.propTaxRate);
-        terms = (Spinner)findViewById(R.id.terms);
         boolean allValid = true;
         if(homeValue.length()==0 || isEditTextValid(homeValue)==-1){
             homeValue.setError("Invalid Number");
@@ -135,22 +143,16 @@ public class MainActivity extends AppCompatActivity {
             /**
              * Setting Output to corresponding Text Views
              */
-            TextView paymentHeader = (TextView)findViewById(R.id.paymentHeader);
-            TextView totalTaxPaid = (TextView)findViewById(R.id.totalTaxPaid);
-            TextView totalInterest = (TextView)findViewById(R.id.totalInterestPaid);
-            TextView monthlyPayment = (TextView)findViewById(R.id.monthlyPayment);
-            TextView payOffDate = (TextView)findViewById(R.id.payOffDate);
-
             paymentHeader.setText("Payment");
-            totalTaxPaid.setText(String.valueOf(TPT));
-            totalInterest.setText(String.valueOf(TI));
-            monthlyPayment.setText(String.valueOf(M));
-            payOffDate.setText(String.valueOf(PD));
+            totalTaxPaid.setText("Total Tax Paid : "+String.valueOf(TPT));
+            totalInterest.setText("Total Interest : "+String.valueOf(TI));
+            monthlyPayment.setText("Monthly Payment : "+String.valueOf(M));
+            payOffDate.setText("Pay Off Date : "+String.valueOf(PD));
 
-            /*Log.i("Total Tax Paid = ",String.valueOf(TPT));
+            Log.i("Total Tax Paid = ", String.valueOf(TPT));
             Log.i("Total Interest = ",String.valueOf(TI));
             Log.i("Monthly Payment = ",String.valueOf(M));
-            Log.i("Pay off date = ",String.valueOf(PD));*/
+            Log.i("Pay off date = ",String.valueOf(PD));
         }
     }
 
@@ -183,5 +185,20 @@ public class MainActivity extends AppCompatActivity {
         }catch (NumberFormatException e){
             return -1;
         }
+    }
+
+    public void reset(){
+
+        homeValue.setText(null);
+        homeValue.requestFocus();
+        downPayment.setText(null);
+        interestRate.setText(null);
+        propTaxRate.setText(null);
+        terms.setSelection(0);
+        paymentHeader.setText(null);
+        totalTaxPaid.setText(null);
+        totalInterest.setText(null);
+        monthlyPayment.setText(null);
+        payOffDate.setText(null);
     }
 }
