@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment android:name="com.aakash.mortgagecalculator.InputFragment"
+            android:id="@+id/input_fragment"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_input">
+        </fragment>
+
+        <fragment android:name="com.aakash.mortgagecalculator.OutputFragment"
+            android:id="@+id/output_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="782dp"
+            tools:layout="@layout/fragment_output"/>
+
+    </LinearLayout>
+</ScrollView>
